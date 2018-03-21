@@ -6,6 +6,12 @@ import Typography from "material-ui-next/Typography";
 import * as _ from "lodash";
 import Todo from "../Todo";
 
+let getNotEmptyTodos = currentTodos => {
+  return _.filter(currentTodos, todo => {
+    if (!_.isEmpty(todo.name)) return todo;
+  });
+};
+
 class TodoList extends React.Component {
   render() {
     let todos = this.props.todos;
@@ -27,7 +33,7 @@ TodoList.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  todos: state.todos.currentTodos
+  todos: getNotEmptyTodos(state.todos.currentTodos)
 });
 
 const mapDispatchToProps = dispatch => ({});
