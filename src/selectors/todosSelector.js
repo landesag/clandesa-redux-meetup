@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 import { createSelector } from "reselect";
 
-const getTodos = state => state.todos;
+const getTodos = state => state.todos.currentTodos;
 
 let getNotEmptyTodos = currentTodos => {
   console.log("Selector llamado");

@@ -29,7 +29,7 @@ TodoList.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  todos: getVisibleTodos(state.todos.currentTodos)
+  todos: getVisibleTodos(state)
 });
 
 const mapDispatchToProps = dispatch => ({});
