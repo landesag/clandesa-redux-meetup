@@ -4,13 +4,9 @@ import { connect } from "react-redux";
 import Paper from "material-ui-next/Paper";
 import Typography from "material-ui-next/Typography";
 import * as _ from "lodash";
-import Todo from "../Todo";
+import { getVisibleTodos } from "../../selectors/todosSelector";
 
-let getNotEmptyTodos = currentTodos => {
-  return _.filter(currentTodos, todo => {
-    if (!_.isEmpty(todo.name)) return todo;
-  });
-};
+import Todo from "../Todo";
 
 class TodoList extends React.Component {
   render() {
@@ -33,7 +29,7 @@ TodoList.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  todos: getNotEmptyTodos(state.todos.currentTodos)
+  todos: getVisibleTodos(state.todos.currentTodos)
 });
 
 const mapDispatchToProps = dispatch => ({});
